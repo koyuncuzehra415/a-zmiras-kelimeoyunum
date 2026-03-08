@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ağız Mirası - Ankara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f8fafc; overflow: hidden; }
+        
+        /* Giriş Arka Planı - Ankara Temalı Görsel */
+        .ankara-hero { 
+            background: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), 
+            url('https://images.unsplash.com/photo-1589410143003-9975776d548f?q=80&w=1920&auto=format&fit=crop'); 
+            background-size: cover; 
+            background-position: center; 
+        }
+
+        .modern-nav { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); }
+        .key-btn { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
+        .key-btn:hover { transform: scale(1.08); filter: brightness(1.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); }
+        .header-font { font-family: 'Montserrat', sans-serif; letter-spacing: 0.15em; }
+        .active-page { display: flex !important; animation: slideIn 0.5s ease-out; }
+        
+        @keyframes slideIn { 
+            from { opacity: 0; transform: translateY(20px) scale(0.98); } 
+            to { opacity: 1; transform: translateY(0) scale(1); } 
+        }
+
+        /* Özel Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="h-screen flex flex-col">
+
+    <nav id="top-bar" class="hidden h-16 modern-nav border-b border-slate-200 flex items-center justify-between px-8 z-50 fixed top-0 w-full shadow-sm">
+        <div class="flex items-center gap-3">
+            <span class="header-font font-extrabold text-slate-800 text-sm">AĞIZ MİRASI</span>
+        </div>
+        <div class="flex gap-4 md:gap-8 items-center">
+            <button onclick="showPage('game')" class="flex items-center gap-2 group">
+                <span class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center text-white text-xs shadow-lg group-hover:rotate-12 transition-transform">🎮</span>
+                <span class="hidden md:inline text-[10px] font-bold text-slate-500 uppercase">Oyun</span>
+            </button>
+            <button onclick="showPage('mistakes')" class="flex items-center gap-2 group">
+                <span class="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center text-white text-xs shadow-lg group-hover:rotate-12 transition-transform">❌</span>
+                <span class="hidden md:inline text-[10px] font-bold text-slate-500 uppercase">Yanlışlar</span>
+            </button>
+            <button onclick="showPage('dictionary')" class="flex items-center gap-2 group">
+                <span class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xs shadow-lg group-hover:rotate-12 transition-transform">📖</span>
+                <span class="hidden md:inline text-[10px] font-bold text-slate-500 uppercase">Sözlük</span>
+            </button>
+            <button onclick="showPage('daily')" class="flex items-center gap-2 group">
+                <span class="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center text-white text-xs shadow-lg group-hover:rotate-12 transition-transform">🌟</span>
+                <span class="hidden md:inline text-[10px] font-bold text-slate-500 uppercase">Günün Sözü</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="flex-grow relative">
+        
+        <div id="landing" class="active-page absolute inset-0 ankara-hero flex flex-col items-center justify-center p-6">
+            <div class="text-center">
+                <h1 class="header-font text-white text-5xl md:text-7xl font-black mb-4 drop-shadow-2xl">AĞIZ MİRASI</h1>
+                <p class="text-blue-100 mb-12 font-medium tracking-widest text-sm md:text-lg uppercase">Ankara'nın Kadim Kelimelerini Keşfet</p>
+                
+                <div id="explore-key" onclick="unlockApp()" class="key-btn bg-white w-40 h-40 rounded-full border-[12px] border-blue-500/40 flex items-center justify-center text-slate-900 font-black text-xs tracking-widest shadow-[0_0_60px_rgba(59,130,246,0.6)] mx-auto hover:bg-slate-50">
+                    KEŞFEDELİM
+                </div>
+
+                <div id="main-menu" class="hidden grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-16 max-w-5xl mx-auto">
+                    <div onclick="showPage('game')" class="key-btn glass-card p-6 rounded-[2rem] text-center shadow-2xl">
+                        <div class="text-4xl mb-3">🎮</div>
+                        <span class="block text-slate-800 font-black text-[10px] uppercase">Oyun Oynayalım</span>
+                    </div>
+                    <div onclick="showPage('mistakes')" class="key-btn glass-card p-6 rounded-[2rem] text-center shadow-2xl">
+                        <div class="text-4xl mb-3">❌</div>
+                        <span class="block text-slate-800 font-black text-[10px] uppercase">Yanlışlarımız</span>
+                    </div>
+                    <div onclick="showPage('dictionary')" class="key-btn glass-card p-6 rounded-[2rem] text-center shadow-2xl">
+                        <div class="text-4xl mb-3">📖</div>
+                        <span class="block text-slate-800 font-black text-[10px] uppercase">Sözlüğüm</span>
+                    </div>
+                    <div onclick="showPage('daily')" class="key-btn glass-card p-6 rounded-[2rem] text-center shadow-2xl">
+                        <div class="text-4xl mb-3">🌟</div>
+                        <span class="block text-slate-800 font-black text-[10px] uppercase">Günün Kelimesi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="game" class="hidden absolute inset-0 pt-20 p-8 bg-slate-50 flex-col items-center">
+            <h2 class="text-3xl font-black text-slate-800 mb-8 header-font uppercase">Kelime Eşleştirme</h2>
+            <div class="flex flex-col md:flex-row gap-8 w-full max-w-5xl h-[70vh]">
+                <div id="words-col" class="flex-1 space-y-3 overflow-y-auto pr-2"></div>
+                <div id="meanings-col" class="flex-1 space-y-3 overflow-y-auto pr-2"></div>
+            </div>
+        </div>
+
+        <div id="mistakes" class="hidden absolute inset-0 pt-20 p-8 bg-red-50 flex-col items-center">
+            <h2 class="text-3xl font-black text-red-900 mb-8 header-font uppercase text-center">Öğrenilmesi Gerekenler</h2>
+            <div id="mistakes-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl overflow-y-auto pb-10">
+                <p class="text-slate-400 italic text-center col-span-2">Henüz yanlış yapılan bir kelime yok. Hadi oyna!</p>
+            </div>
+        </div>
+
+        <div id="dictionary" class="hidden absolute inset-0 pt-20 p-8 bg-blue-50 flex-col items-center">
+            <h2 class="text-3xl font-black text-blue-900 mb-8 header-font uppercase">Ankara Ağzı Kütüphanesi</h2>
+            <div id="dict-list" class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-6xl overflow-y-auto pb-20"></div>
+        </div>
+
+        <div id="daily" class="hidden absolute inset-0 pt-20 p-8 bg-emerald-50 flex flex-col items-center justify-center">
+            <div class="glass-card p-10 md:p-20 rounded-[4rem] shadow-2xl max-w-2xl text-center border-4 border-white">
+                <h3 class="header-font text-emerald-600 font-black tracking-widest text-xs mb-8 uppercase">Günün Ankara Kelimesi</h3>
+                <h4 id="daily-word" class="text-6xl md:text-7xl font-black text-slate-900 mb-8 uppercase tracking-tighter">---</h4>
+                <p id="daily-mean" class="text-xl md:text-2xl text-slate-600 leading-relaxed italic px-6">---</p>
+                <div class="mt-12 pt-8 border-t border-emerald-100 text-emerald-700 font-bold text-[10px] tracking-widest">ANKARA KÜLTÜR MİRASI</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // PDF Belgesinden Güncellenmiş ve Temizlenmiş Kelime Listesi (CITE Yazıları Çıkarıldı)
+        const ankaraData = [
+            {w: "Abdaslık", m: "Abdest alınan ve el yüz yıkanan yer."},
+            {w: "Alamuk", m: "Yıkılmış veya yarım bırakılmış ev."},
+            {w: "Almazlık", m: "Gusülhane, oda içinde banyo için ayrılan yer, dolap."},
+            {w: "Asma oda", m: "İki üç basamak merdivenle çıkılan oda."},
+            {w: "Atanak", m: "Köy odalarında misafirlerin palto asması için uzatılan ağaç."},
+            {w: "Avla", m: "Bahçelerin etrafına dallardan yapılan engel veya küçük bahçe."},
+            {w: "Avlum", m: "Ayakyolu, hela."},
+            {w: "Köhle", m: "Evlerdeki baca."},
+            {w: "Yuvak", m: "Toprak damı düzlemek ve pekiştirmekte kullanılan taş silindir."},
+            {w: "Iza", m: "Kabuklu buğday."},
+            {w: "Etlik", m: "Sucuk, pastırma ve sızgıt cinsi kışlık yiyecekler."},
+            {w: "Hüyük", m: "Tarladaki taş yığınları."},
+            {w: "Irgatlık", m: "Hasat mevsimi, ekin biçme zamanı."},
+            {w: "Höşmelim", m: "Mısır unundan yapılan bir çeşit tepsi böreği."},
+            {w: "Ağıl", m: "Küçükbaş hayvanların gecelediği yer."},
+            {w: "Çambardak", m: "Çam ağacı oyularak yapılan su kabı."},
+            {w: "Abartma", m: "Değirmen çöreği."},
+            {w: "Cıba", m: "Tüyü yeni kırkılmış koyun veya keçi."},
+            {w: "Büğek", m: "Buzağıların emmesini engellemek için takılan ucu sivri araç."}
+        ];
+
+        let mistakes = [];
+        let currentSelected = null;
+
+        function unlockApp() {
+            document.getElementById('explore-key').classList.add('scale-150', 'opacity-0');
+            setTimeout(() => {
+                document.getElementById('explore-key').classList.add('hidden');
+                document.getElementById('main-menu').classList.remove('hidden');
+                document.getElementById('top-bar').classList.remove('hidden');
+                document.getElementById('top-bar').classList.add('flex');
+            }, 300);
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('main > div').forEach(div => div.classList.remove('active-page'));
+            document.getElementById(pageId).classList.add('active-page');
+            document.getElementById(pageId).classList.remove('hidden');
+            if(pageId === 'game') startMatchGame();
+            if(pageId === 'dictionary') loadDict();
+            if(pageId === 'daily') loadDaily();
+        }
+
+        function startMatchGame() {
+            const wCol = document.getElementById('words-col');
+            const mCol = document.getElementById('meanings-col');
+            wCol.innerHTML = ''; mCol.innerHTML = '';
+            
+            const roundData = [...ankaraData].sort(() => 0.5 - Math.random()).slice(0, 6);
+            const shuffledMeanings = [...roundData].sort(() => 0.5 - Math.random());
+
+            roundData.forEach(item => {
+                const btn = document.createElement('div');
+                btn.className = 'glass-card p-5 rounded-2xl cursor-pointer hover:bg-orange-50 border-2 border-transparent font-bold text-slate-800 transition-all text-sm';
+                btn.innerText = item.w;
+                btn.onclick = () => {
+                    document.querySelectorAll('#words-col div').forEach(d => d.classList.remove('border-orange-500', 'bg-orange-50'));
+                    btn.classList.add('border-orange-500', 'bg-orange-50');
+                    currentSelected = item;
+                };
+                wCol.appendChild(btn);
+            });
+
+            shuffledMeanings.forEach(item => {
+                const btn = document.createElement('div');
+                btn.className = 'glass-card p-5 rounded-2xl cursor-pointer hover:bg-blue-50 text-xs text-slate-600 leading-relaxed';
+                btn.innerText = item.m;
+                btn.onclick = () => {
+                    if(!currentSelected) return;
+                    if(currentSelected.m === item.m) {
+                        btn.classList.add('bg-emerald-500', 'text-white', 'pointer-events-none');
+                        btn.innerText = "✓ " + btn.innerText;
+                    } else {
+                        if(!mistakes.some(x => x.w === currentSelected.w)) {
+                            mistakes.push(currentSelected);
+                            updateMistakesUI();
+                        }
+                        btn.classList.add('bg-red-100');
+                        setTimeout(() => btn.classList.remove('bg-red-100'), 500);
+                    }
+                    currentSelected = null;
+                    document.querySelectorAll('#words-col div').forEach(d => d.classList.remove('border-orange-500', 'bg-orange-50'));
+                };
+                mCol.appendChild(btn);
+            });
+        }
+
+        function updateMistakesUI() {
+            const list = document.getElementById('mistakes-list');
+            list.innerHTML = '';
+            mistakes.forEach(item => {
+                list.innerHTML += `<div class="bg-white p-6 rounded-[2rem] border-l-8 border-red-500 shadow-xl">
+                    <h4 class="font-black text-red-600 text-lg uppercase tracking-wider">${item.w}</h4>
+                    <p class="text-slate-500 mt-2 text-sm leading-relaxed">${item.m}</p>
+                </div>`;
+            });
+        }
+
+        function loadDict() {
+            const list = document.getElementById('dict-list');
+            list.innerHTML = '';
+            ankaraData.forEach(item => {
+                list.innerHTML += `<div class="glass-card p-6 rounded-[2rem] shadow-md hover:shadow-xl transition-shadow">
+                    <span class="text-blue-600 font-black text-md block mb-3 border-b border-blue-100 pb-2 uppercase tracking-widest">${item.w}</span>
+                    <span class="text-xs text-slate-500 italic leading-relaxed">${item.m}</span>
+                </div>`;
+            });
+        }
+
+        function loadDaily() {
+            const dayIndex = new Date().getDate() % ankaraData.length;
+            const item = ankaraData[dayIndex];
+            document.getElementById('daily-word').innerText = item.w;
+            document.getElementById('daily-mean').innerText = item.m;
+        }
+    </script>
+</body>
+</html>

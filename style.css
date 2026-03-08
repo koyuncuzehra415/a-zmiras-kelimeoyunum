@@ -1,0 +1,82 @@
+/* Genel Ayarlar ve Font Tanımları */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    font-family: 'Poppins', sans-serif; 
+    background-color: #f8fafc; 
+    color: #1e293b;
+    overflow: hidden; 
+}
+
+/* Ankara Temalı Giriş Arka Planı */
+.ankara-hero { 
+    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
+    url('https://images.unsplash.com/photo-1589410143003-9975776d548f?q=80&w=1920&auto=format&fit=crop'); 
+    background-size: cover; 
+    background-position: center; 
+}
+
+/* Modern Navigasyon Barı */
+.modern-nav { 
+    background: rgba(255, 255, 255, 0.98); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Cam Efektli Kartlar (Glassmorphism) */
+.glass-card { 
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    text-align: center;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Buton ve Etkileşim Animasyonları */
+.key-btn { 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    cursor: pointer; 
+}
+
+.key-btn:hover { 
+    transform: scale(1.05); 
+    filter: brightness(1.1); 
+}
+
+/* Başlık Yazı Tipi */
+.header-font { 
+    font-family: 'Montserrat', sans-serif; 
+    letter-spacing: 0.1em; 
+}
+
+/* Sayfa Geçiş Animasyonu */
+.active-page { 
+    display: flex !important; 
+    animation: slideIn 0.5s ease-out; 
+}
+
+@keyframes slideIn { 
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    } 
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+}
+
+/* Özel Kaydırma Çubuğu */
+::-webkit-scrollbar { 
+    width: 6px; 
+}
+
+::-webkit-scrollbar-thumb { 
+    background: #cbd5e1; 
+    border-radius: 10px; 
+}
